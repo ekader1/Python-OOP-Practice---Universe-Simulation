@@ -1,85 +1,25 @@
-﻿# CS342 Design Patterns
-## Fall 2018
-### PROJECT 1 README FILE
+Design Patterns
 
-## DESIGN OVERVIEW:
-- State each design pattern used (if any)
- ! I think my design is similar to Factory Pattern, where each type of object has specific and certain charasteristics. Planet Class has 3 type of object and there are no configuration on them.Same structure with the Star class.
-- Brief (< 5 sentences) description of your overall design
-!I started with the class Planet, and went through it's upper segments. Universe Class work as a root of the tree structure, where Star and Planet classes are it's branches. And Probe could be seen as another leaf of the tree, but independent from the Star , Planet branches.
-
-- Description of your search algorithm
-!Algorithm, visits first star generated in the universeobj.starslist, then visits first star of
-universeobj.star.planetslist. After visits each planet of that stars, then probe goes for next star object. 
-
-## KNOWN BUGS AND INCOMPLETE PARTS:
-- What parts of the project you were not able to complete
-
-
-## REFERENCES:
-- List any outside resources used
-!No outside source than lecture's slides.
-
-
-## MISCELLANEOUS COMMENTS:
-- Anything you would like the grader to know
-
-## Assignment Description
-***
-# Project 1 - Searching the Stars
-### Due Date: 11:59 p.m., September 28th, 2018
-
-*All programs will be tested on the machines in the Q22 lab. If your code does not run on the system in this lab, it is considered non-functioning EVEN IF IT RUNS ON YOUR PERSONAL COMPUTER. Always check that your code runs on the lab machines before submitting.*
-
-### Driver Code and Test Files
-* project1.py
-
-### Grading Rubric
-**Total: 47 points**
 * Universe Class Requirements:
-   * (2 pts) The __init__ method takes the number of stars to create
-   * (2 pts) Contain a print universe method that prints required data
+    The __init__ method takes the number of stars to create
+    Contain a print universe method that prints required data
 * Star Class Requirements:
-   * (2 pts) Star Base Class with unique x, y, z coordinates in the range 2**8..2**64
-   * (3 pts) Star SubClasses: DwarfStar, GiantStar, MediumStar
-   * (3 pts) Each Star subtype has attributes: chances of life, number of planets (as a range), goldilocks zone, recharge amount
-   * (2 pts) Stars generate and save a list of planets using the above attributes
-   * (2 pts) Star Coordinates are verifiably unique
-   * (2 pts) Instance variables follow python conventions for private data
+    Star Base Class with unique x, y, z coordinates in the range 2**8..2**64
+    Star SubClasses: DwarfStar, GiantStar, MediumStar
+    Each Star subtype has attributes: chances of life, number of planets (as a range), goldilocks zone, recharge amount
+    Stars generate and save a list of planets using the above attributes
+    Star Coordinates are verifiably unique
+    Instance variables follow python conventions for private data
 * Planet Class Requirements:
-   * (2 pts) Planet base class that contains distance from star
-   * (4 pts) Planet SubClasses: RockyPlanet, GaseousPlanet, HabitablePlanet
-   * (4 pts) Each Planet is marked with having or not having intelligent life based on star attributes and distance from star
-   * (2 pts) Each planet has a unique identifier as described.
+   Planet base class that contains distance from star
+   Planet SubClasses: RockyPlanet, GaseousPlanet, HabitablePlanet
+   Each Planet is marked with having or not having intelligent life based on star attributes and distance from star
+   Each planet has a unique identifier as described.
 * Probe Class Requirements:
-   * (3 pts) Keeps track of the requested information
-   * (5 pts) Unique algorithm to determine which Star should be visited next
-   * (2 pts) Has a fuel attribute that depletes during the search algorithm, and recharges using the recharge amount for each star
-   * (3 pts) A print method that prints the probe’s findings.
-* Submission:
-   * (2 pts) Follows requested project structure and submission format
-   * (2 pts) README sections complete
-   * Meets the commit requirement of having 3 significant commits 24 hours apart
-
-### Guidelines
-This is an individual assignment. You must do the vast majority of the work on your own. It is permissible to consult with classmates to ask general questions about the assignment, to help discover and fix specific bugs, and to talk about high level approaches in general terms. It is not permissible to give or receive answers or solution details from fellow students.
-
-You may research online for additional resources; however, you may not use code that was written specifically *to* solve the problem you have been given, and you may not have anyone else help you write the code or solve the problem. You may use code snippets found online, providing that they are appropriately and clearly cited, within your submitted code.
-
-*By submitting this assignment, you agree that you have followed the above guidelines regarding collaboration and research.*
-
-__In this project, you will learn to__:
-
-* Manage a large programming assignment with many parts
-* write memory efficient software
-
-***
-
-
-## Description
-
-
-For our first assignment we are going to simulate the universe, and then search it for intelligent life. There will be two parts to this project. In Part A you will build a universe of stars and planets. Each star will have a type, an x, y, and z coordinate, and a random range of planets orbiting the star.
+    Keeps track of the requested information
+    Unique algorithm to determine which Star should be visited next
+    Has a fuel attribute that depletes during the search algorithm, and recharges using the recharge amount for each star
+    A print method that prints the probe’s findings.
 
 
 ## Part 1
@@ -104,8 +44,6 @@ You should first create a Universe class as a container class for all your stars
    * Goldilocks Zone: 60-140
    * Recharge: 2**25
 
-:bulb: The values above should be hard-coded into your program and adjusted
-to suit your design if necessary.
 
 Each star will have an x,y,z coordinate to give it a location in space. No two stars should have the same x, y, z coordinates. You will need to use these coordinates to navigate from star to star, so the coordinates must be readable but should not be writable, using python private variable conventions. You should randomly generate these x,y,z coordinates, each in the range of (2^3..2^64)-1.  
 
@@ -243,46 +181,3 @@ Traveled 1.6731455226093466e+20 miles
 Found life on planet h8657
 ```
 
-## Part 3: Submission
-
-Required code organization:
-* project1.py
-    * this contains your main driver code
-* Universe.py
-* Star.py
-    * You can put your Star subclasses into one file if you wish
-* Planet.py
-    * You can put your planet subclasses into one file if you wish
-* Probe.py
-    * The Probe class should be in a file by itself
-* Include any additional files
-
-### Git
-
-An additional git requirement for this project is that you commit your changes throughout the development of your project. You do not necessarily need to push the commits to Github, but we will look at your repository commit history to ensure you have **3 significant commits 24 hours apart**. If you do not meet the commit requirements, we will not accept your project and you will receive a 0.
-
-These are a reminder of the git commands you will need to submit your project.
-
-:warning: *These commands all presume that your current working directory is within the directory tracked by `git`.*
-
-```shell
-git status
-git add info.txt
-git commit -a -m "final commit message"
-git push
-```
-:warning: *You* __must__ *add any new files you create to the repository with the `git add` command or they will not upload to the repo, and your code will not work.*
-
-To find your most recent commit hash, use the following command:
-
-```shell
-git rev-parse HEAD
-```    
-
-
-
-To complete your submission, you must copy and paste this number into mycourses. Go to MyCourses, select cs342, and **Assignment Hash Submission**. Select Project 1, and where it says text submission, paste your commit hash. The TAs will only grade your submission that corresponds to the hash you submitted. You can update this as often as you like until the deadline.
-
-I strongly recommend making a submission early on, even if your assignment is not 100% working, to avoid late penalties. You can resubmit as many times as you like.
-
-:warning: You __MUST__ submit the commit hash on mycourses before the deadline to be considered on time **even if your project is completely working before the deadline**. :warning:
